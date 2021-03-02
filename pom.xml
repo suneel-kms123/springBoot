@@ -8,6 +8,13 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<name>SpringBoot Maven Webapp</name>
 	<url>http://maven.apache.org</url>
+
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.4.2</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
 	<dependencies>
 		<dependency>
 			<groupId>junit</groupId>
@@ -33,23 +40,46 @@
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-webmvc</artifactId>
-			<version>3.1.2.RELEASE</version>
+			<version>5.3.4</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter</artifactId>
+			<version>2.4.2</version>
+		</dependency>
+
+		<dependency>
+    		<groupId>io.springfox</groupId>
+    		<artifactId>springfox-boot-starter</artifactId>
+   			<version>3.0.0</version>
+		</dependency>
+
+		<dependency>
+    		<groupId>io.springfox</groupId>
+    		<artifactId>springfox-swagger-ui</artifactId>
+    		<version>3.0.0</version>
 		</dependency>
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
+			<version>2.4.2</version>
 		</dependency>
 	</dependencies>
 	<properties>
 		<java.version>1.8</java.version>
+		<start-class>com.demoApplication.Application</start-class>
 	</properties>
 	<build>
-		<finalName>SpringBoot</finalName>
-	</build>
+    <plugins>
+        <plugin>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-maven-plugin</artifactId>             
+            <configuration>    
+                <mainClass>com.demoApplication.Application</mainClass>
+            </configuration>
+        </plugin>
+    </plugins>
+</build>
 </project>
