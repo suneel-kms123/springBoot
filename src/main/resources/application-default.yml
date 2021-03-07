@@ -1,15 +1,11 @@
+server:
+  port: 8088
+
 spring:
   main:
     web-application-type: none
   kafka:
-    bootstrap-servers: ${kafka_bootstrap_servers:localhost:9092}
-    properties:
-      sasl:
-        jaas:
-          config: org.apache.kafka.common.security.plain.PlainLoginModule required username=${kafka_username:'admin'} password=${kafka_password:'admin-secret'};
-        mechanism: PLAIN
-      security:
-        protocol: SASL_PLAINTEXT
+    bootstrap-servers: "${spring.embedded.kafka.brokers:#{localhost:9092}}"
     consumer:
       auto-offset-reset: earliest
       group-id: example
@@ -24,9 +20,3 @@ spring:
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.apache.kafka.common.serialization.StringSerializer
       retries: 2
-    jaas:
-      enabled: true
-    listener:
-      poll-timeout: 1800000
-      concurrency: 1
-      ack-mode: manual_immediate
