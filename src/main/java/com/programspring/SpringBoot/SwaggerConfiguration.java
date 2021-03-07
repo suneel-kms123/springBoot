@@ -1,5 +1,6 @@
 package com.programspring.SpringBoot;
 
+import org.assertj.core.util.Sets;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 
@@ -16,10 +17,12 @@ public class SwaggerConfiguration {
     @Bean
     public Docket api() { 
         return new Docket(DocumentationType.SWAGGER_2)  
-          .select()                                  
-          .apis(RequestHandlerSelectors.any())              
-          .paths(PathSelectors.any())                          
-          .build();                                           
+            .host("http://localhost:8080/api/v1") 
+            .produces(Sets.newHashSet())
+            .select()                                 
+            .apis(RequestHandlerSelectors.any())              
+            .paths(PathSelectors.any())                          
+            .build();                                           
     }
     
 }

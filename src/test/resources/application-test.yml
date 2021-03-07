@@ -1,5 +1,5 @@
 server:
-  port: 8088
+  port: 8080
 
 spring:
   main:
@@ -20,3 +20,11 @@ spring:
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.apache.kafka.common.serialization.StringSerializer
       retries: 2
+
+local:
+  server:
+    port: 8088
+
+http:
+  proxyHost: localhost
+  proxyPort: 8080
